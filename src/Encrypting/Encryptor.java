@@ -1,3 +1,4 @@
+package Encrypting;
 
 public class Encryptor {
 	
@@ -5,8 +6,9 @@ public class Encryptor {
 	protected String ciphertext;
 	protected String key;
 	
-	public Encryptor(String plaintext, String key) {
+	public Encryptor(String plaintext, String ciphertext, String key) {
 		this.plaintext = plaintext;
+		this.ciphertext = ciphertext;
 		this.key = key;
 	}
 	
@@ -32,6 +34,11 @@ public class Encryptor {
 	public void encrypt() {
 		System.out.println("Nix wird verschlüsselt");
 	}
+	
+	public void decrypt() {
+		System.out.println("Nix wird entschlüsselt");
+	}
+
 	
 	protected boolean onlyLetters(String text) {
 		char[] textArray = text.toCharArray();
