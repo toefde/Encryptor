@@ -17,9 +17,8 @@ public class CaesarEncryptorNG1 extends Encryptor implements EncryptorInterface 
 		}
 		decryptAssignment.put(' ', ' ');
 		for(int i = 0; i < encryptAssignment.size(); i++) {
-			//System.out.println(encryptAssignment.toString());
+			System.out.println(encryptAssignment.toString());
 		}
-		System.out.println(encryptAssignment.size());
 	}
 
 	@Override
@@ -34,7 +33,7 @@ public class CaesarEncryptorNG1 extends Encryptor implements EncryptorInterface 
 	@Override
 	public void decrypt() {
 		plaintext = "";
-		char[] ciphertextArray = ciphertext.toUpperCase().toCharArray();
+		char[] ciphertextArray = ciphertext.toCharArray();
 		for(int i = 0; i < ciphertextArray.length; i++) {
 			plaintext += decryptAssignment.get(ciphertextArray[i]);
 		}

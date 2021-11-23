@@ -7,6 +7,7 @@ import Encrypting.CaesarEncryptor;
 import Encrypting.CaesarEncryptorNG1;
 import Encrypting.Encryptor;
 import Encrypting.VigenereEncryptor;
+import Encrypting.VigenereEncryptorNG1;
 import Exceptions.AlgorithmNotFoundException;
 
 public class Encrypt {
@@ -43,9 +44,9 @@ public class Encrypt {
 		switch (algorithm.toLowerCase()) {
 			case "caesar":
 				if(encrypt) {
-					encryptor = new CaesarEncryptor(readFile(inputfile), "", key);
+					encryptor = new CaesarEncryptor(readFile(inputfile).toUpperCase(), "", key);
 				} else {
-					encryptor = new CaesarEncryptor("", readFile(inputfile), key);
+					encryptor = new CaesarEncryptor("", readFile(inputfile).toUpperCase(), key);
 				}
 				break;
 			case "caesarng1":
@@ -57,16 +58,16 @@ public class Encrypt {
 				break;
 			case "vigenere":
 				if(encrypt) {
-					encryptor = new VigenereEncryptor(readFile(inputfile), "", key);					
+					encryptor = new VigenereEncryptor(readFile(inputfile).toUpperCase(), "", key);					
 				} else {
-					encryptor = new VigenereEncryptor("", readFile(inputfile), key);
+					encryptor = new VigenereEncryptor("", readFile(inputfile).toUpperCase(), key);
 				}
 				break;
 			case "vigenereng1":
 				if(encrypt) {
-					encryptor = new VigenereEncryptor(readFile(inputfile), "", key);					
+					encryptor = new VigenereEncryptorNG1(readFile(inputfile), "", key);					
 				} else {
-					encryptor = new VigenereEncryptor("", readFile(inputfile), key);
+					encryptor = new VigenereEncryptorNG1("", readFile(inputfile), key);
 				}
 				break;
 			default:
@@ -99,7 +100,7 @@ public class Encrypt {
 			back += in.nextLine();
 		}
 		in.close();
-		return back.toUpperCase();
+		return back;
 	}
 	
 	private static void writeFile(String filename, String text) {
