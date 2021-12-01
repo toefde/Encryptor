@@ -1,5 +1,7 @@
 package Encrypting;
 
+import Exceptions.WrongInputException;
+
 public class CaesarEncryptor extends Encryptor implements EncryptorInterface {
 
 	public CaesarEncryptor(String plaintext, String ciphertext, String key) {
@@ -9,8 +11,7 @@ public class CaesarEncryptor extends Encryptor implements EncryptorInterface {
 	@Override
 	public void encrypt() {
 		if(onlyLetters(key)) {
-			System.out.println(key);
-			throw new IllegalStateException("Key must be only numbers");
+			throw new WrongInputException("Key [" + key + "] not allowed. Only numbers pls");
 		}
 		ciphertext = "";
 		char[] plaintextArray = plaintext.toUpperCase().toCharArray();

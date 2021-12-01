@@ -2,8 +2,8 @@ package Exceptions;
 
 public class AlgorithmNotFoundException extends RuntimeException {
 
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -4245441700666820085L;
+	
 	private String algortihm;
 	
 	public AlgorithmNotFoundException(String algortihm) {

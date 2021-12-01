@@ -16,9 +16,6 @@ public class CaesarEncryptorNG1 extends Encryptor implements EncryptorInterface 
 			decryptAssignment.put((char)(charact + (Integer.parseInt(key) % 26) % 256), (char)charact);
 		}
 		decryptAssignment.put(' ', ' ');
-		for(int i = 0; i < encryptAssignment.size(); i++) {
-			System.out.println(encryptAssignment.toString());
-		}
 	}
 
 	@Override

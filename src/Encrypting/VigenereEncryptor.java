@@ -1,5 +1,7 @@
 package Encrypting;
 
+import Exceptions.WrongInputException;
+
 public class VigenereEncryptor extends Encryptor implements EncryptorInterface {
 
 	public VigenereEncryptor(String plaintext, String ciphertext, String key) {
@@ -9,7 +11,7 @@ public class VigenereEncryptor extends Encryptor implements EncryptorInterface {
 	@Override
 	public void encrypt() throws IllegalArgumentException {
 		if(!onlyLetters(key)) {
-			throw new IllegalStateException("Key must be only letters");
+			throw new WrongInputException("Key [" + key + "] not allowed. Only letters pls");
 		}
 		ciphertext = "";
 		while(key.length() < plaintext.length()) {
@@ -25,7 +27,7 @@ public class VigenereEncryptor extends Encryptor implements EncryptorInterface {
 	@Override
 	public void decrypt() {
 		if(!onlyLetters(key)) {
-			throw new IllegalStateException("Key must be only letters");
+			throw new WrongInputException("Key [" + key + "] not allowed. Only letters pls");
 		}
 		plaintext = "";
 		while(key.length() < ciphertext.length()) {
