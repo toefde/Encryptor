@@ -1,4 +1,4 @@
-package Encrypting;
+package encryption;
 
 public class VigenereEncryptorNG1 extends Encryptor implements EncryptorInterface {
 

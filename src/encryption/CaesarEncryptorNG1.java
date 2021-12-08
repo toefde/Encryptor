@@ -1,4 +1,4 @@
-package Encrypting;
+package encryption;
 import java.util.HashMap;
 
 public class CaesarEncryptorNG1 extends Encryptor implements EncryptorInterface {

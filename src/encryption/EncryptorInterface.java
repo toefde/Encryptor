@@ -1,4 +1,4 @@
-package Encrypting;
+package encryption;
 
 public interface EncryptorInterface {
 

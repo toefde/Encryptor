@@ -1,10 +1,8 @@
-package Encrypting;
+package encryption;
 
 public class Encryptor {
 	
-	protected String plaintext;
-	protected String ciphertext;
-	protected String key;
+	protected String plaintext, ciphertext, key;
 	
 	public Encryptor(String plaintext, String ciphertext, String key) {
 		this.plaintext = plaintext;
@@ -12,6 +10,7 @@ public class Encryptor {
 		this.key = key;
 	}
 	
+	// getters and setters
 	public String getPlaintext() {
 		return plaintext;
 	}
@@ -39,7 +38,7 @@ public class Encryptor {
 		System.out.println("Nix wird entschlüsselt");
 	}
 
-	
+	// return boolean whether there are only letters in string
 	protected boolean onlyLetters(String text) {
 		char[] textArray = text.toCharArray();
 		for(char item : textArray) {
