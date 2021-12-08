@@ -9,25 +9,22 @@ import encryption.Encryptor;
 import encryption.VigenereEncryptor;
 import encryption.VigenereEncryptorNG1;
 import exceptions.AlgorithmNotFoundException;
+import exceptions.WrongInputException;
 
 public class Encrypt {
 
 	// declaring variables for command line parameters
 	private static String inputfile, outputfile, key, algorithm;
-	private static boolean encrypt, withGUI;
+	private static boolean encrypt;
 	
 	// declare superclass encryptor
 	private static Encryptor encryptor = null;
 	
 	public static void main(String[] args) {
 		// check for valid parameters
-		if(args[0] == "help" || args.length != 6) {
-			System.out.println("Encrypt <inputfile> <outputfile> <key> <algorithm> <encrypt|decrypt> <gui|nogui>");
-			return;
+		if(args[0] == "help" || args.length != 5) {
+			throw new WrongInputException("Encrypt <inputfile> <outputfile> <key> <algorithm> <encrypt|decrypt> <gui|nogui>");
 		}
-		
-		// store starttime for duration
-		long startTime = System.currentTimeMillis();
 		
 		// initialize variables
 		inputfile = args[0];
@@ -39,17 +36,14 @@ public class Encrypt {
 		} else {
 			encrypt = true;
 		}
-		if(args[5].compareToIgnoreCase("gui") == 0) {
-			withGUI = true;
-		} else {
-			withGUI = false;
-		}
 		
 		System.out.println("INPUT: " + readFile(inputfile));
 		System.out.println("KEY: " + key);
 		System.out.println("MODE: " + algorithm);
 		System.out.println("ENCRYPT: " + encrypt);
-		System.out.println("GUI ACTIVE: " + withGUI);
+		
+		// store starttime for duration
+		long startTime = System.currentTimeMillis();
 		
 		// select matching encryptor according to algorithm
 		switch (algorithm.toLowerCase()) {
@@ -102,9 +96,10 @@ public class Encrypt {
 		
 		// print time duration
 		System.out.println("Total time: " + (System.currentTimeMillis() - startTime) + "ms");
+
 	}
 	
-	private static String readFile(String filename) {
+	public static String readFile(String filename) {
 		String back = "";
 		File file = new File(filename);
 		Scanner in = null;
@@ -120,7 +115,7 @@ public class Encrypt {
 		return back;
 	}
 	
-	private static void writeFile(String filename, String text) {
+	public static void writeFile(String filename, String text) {
 		PrintWriter out = null;
 		try {
 			out = new PrintWriter(filename);
